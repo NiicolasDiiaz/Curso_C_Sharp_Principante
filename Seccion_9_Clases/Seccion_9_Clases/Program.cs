@@ -112,7 +112,21 @@ namespace Seccion_9_Clases
                 item.showAlumno();
             }
         }
-        public static void Punto3() { }
+        public static void Punto3() 
+        {
+            Coche car = new Coche();
+            car.sayName();
+            car.transportWay();
+            Console.WriteLine();
+            Avion airplane = new Avion();
+            airplane.sayName();
+            airplane.transportWay();
+            Console.WriteLine();
+            Barco ship = new Barco();
+            ship.sayName();
+            ship.transportWay();
+            Console.WriteLine();
+        }
         public static void Punto4() { }
         public static void Punto5() { }
         public static void Punto6() { }
