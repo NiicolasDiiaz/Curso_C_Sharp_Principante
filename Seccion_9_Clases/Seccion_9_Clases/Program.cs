@@ -152,7 +152,7 @@ namespace Seccion_9_Clases
         public static void Punto6() 
         {
             Animal userAnimal = new Animal();
-            Console.WriteLine("Ingresa 4 caracteristicas de tu animal: ");
+            Console.WriteLine("Ingresa 4 caracteristicas de tu animal! ");
             Console.WriteLine("Es domestico? (si/no)");
             if (Console.ReadLine()=="si")
             {
