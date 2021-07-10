@@ -151,6 +151,7 @@ namespace Seccion_9_Clases
         }
         public static void Punto6() 
         {
+            //Prueba pull recordar eliminar
             Animal userAnimal = new Animal();
             Console.WriteLine("Ingresa 4 caracteristicas de tu animal! ");
             Console.WriteLine("Es domestico? (si/no)");
