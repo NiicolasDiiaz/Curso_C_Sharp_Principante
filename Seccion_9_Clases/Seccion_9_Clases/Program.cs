@@ -127,7 +127,20 @@ namespace Seccion_9_Clases
             ship.transportWay();
             Console.WriteLine();
         }
-        public static void Punto4() { }
+        public static void Punto4() 
+        {
+            Console.WriteLine("Ingrese numero de puertas y ruedas, cada una despues de un intro:");
+            int puertas = int.Parse(Console.ReadLine());
+            int ruedas = int.Parse(Console.ReadLine());
+
+            Vehiculo car1 = new Vehiculo();
+            Vehiculo car2 = new Vehiculo(puertas);
+            Vehiculo car3 = new Vehiculo(puertas, ruedas);
+
+            car1.getVehiculoInfo();
+            car2.getVehiculoInfo();
+            car3.getVehiculoInfo();
+        }
         public static void Punto5() { }
         public static void Punto6() { }
     }
