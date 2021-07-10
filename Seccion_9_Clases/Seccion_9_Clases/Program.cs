@@ -141,7 +141,35 @@ namespace Seccion_9_Clases
             car2.getVehiculoInfo();
             car3.getVehiculoInfo();
         }
-        public static void Punto5() { }
-        public static void Punto6() { }
+        public static void Punto5() 
+        {
+            Console.WriteLine("Ingrese dos valores a sumar, cada uno despues de un intro:");
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("La suma es: " + Producto.Sumar(a, b));
+        }
+        public static void Punto6() 
+        {
+            Animal userAnimal = new Animal();
+            Console.WriteLine("Ingresa 4 caracteristicas de tu animal: ");
+            Console.WriteLine("Es domestico? (si/no)");
+            if (Console.ReadLine()=="si")
+            {
+                userAnimal.esDomestico = true;
+            }
+            else
+            {
+                userAnimal.esDomestico = false;
+            }
+            Console.WriteLine("¿Cual es su color de pelo?");
+            userAnimal.colorPelo = Console.ReadLine();
+            Console.WriteLine("¿Cuantas patas tiene?");
+            userAnimal.numeroPatas = int.Parse(Console.ReadLine());
+            Console.WriteLine("¿Cual es su tipo?");
+            userAnimal.tipo = Console.ReadLine();
+
+            Console.WriteLine($"Tu animal tiene {userAnimal.numeroPatas} patas, es de tipo {userAnimal.tipo} tiene pelo {userAnimal.colorPelo} y {(userAnimal.esDomestico ? "es domestico" : "no es domestico")} ");
+        }
     }
 }
