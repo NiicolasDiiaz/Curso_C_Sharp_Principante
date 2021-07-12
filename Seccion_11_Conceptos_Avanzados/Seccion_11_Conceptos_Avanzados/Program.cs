@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Seccion_11_Conceptos_Avanzados
 {
@@ -41,7 +42,31 @@ namespace Seccion_11_Conceptos_Avanzados
             }
         }
 
-        public static void Punto1() { }
+        public static void Punto1() 
+        {
+            Dictionary<int, String> diccionario = new Dictionary<int, string>();
+            Console.WriteLine("Ingrese un numero y una cadena por cada intro, respectivamente");
+            int clave = int.Parse(Console.ReadLine());
+            string valor = Console.ReadLine();
+
+            while (clave != 0)
+            {
+                diccionario.Add(clave, valor);
+                Console.WriteLine("Ingrese un numero y una cadena por cada intro, respectivamente");
+                clave = int.Parse(Console.ReadLine());
+                valor = Console.ReadLine();
+            }
+            Console.WriteLine("Ingrese una cadena de 2 letras");
+            string palabraBusqueda = Console.ReadLine();
+
+            foreach (var item in diccionario)
+            {
+                if (item.Value.Contains(palabraBusqueda))
+                {
+                    Console.WriteLine("La key es: " + item.Key.ToString());
+                }
+            }
+        }
         public static void Punto2() { }
         public static void Punto3() { }
     }
