@@ -94,10 +94,17 @@ namespace Seccion_11_Conceptos_Avanzados
             {
                 Console.WriteLine(item);
             }
-
-
-
         }
-        public static void Punto3() { }
+        public static void Punto3() 
+        {
+            Animal userAnimal = new Animal();
+            Console.WriteLine("Ingrese un numero");
+            int numeroUser = int.Parse(Console.ReadLine());
+
+            animales userAnimales = (animales)numeroUser;
+            userAnimal.identAnimal(userAnimales);
+            Console.WriteLine("Ese valor pertenece al: " + userAnimal.tipo);
+            
+        }
     }
 }
