@@ -67,7 +67,37 @@ namespace Seccion_11_Conceptos_Avanzados
                 }
             }
         }
-        public static void Punto2() { }
+        public static void Punto2() 
+        {
+            ListaTotal<string> listaString = new ListaTotal<string>();
+
+            Console.WriteLine("ingrese 3 strings separados por intro");
+            for (int i = 0; i < 3; i++)
+            {
+                listaString.Anadir(Console.ReadLine());
+            };
+            Console.WriteLine();
+            foreach (var item in listaString.ObtenerLista())
+            {
+                Console.WriteLine(item);
+            }
+
+
+            Console.WriteLine("ingrese 3 enteros separados por intro");
+            ListaTotal<int> listaInt = new ListaTotal<int>();
+            for (int i = 0; i < 3; i++)
+            {
+                listaInt.Anadir(int.Parse(Console.ReadLine()));
+            };
+            Console.WriteLine();
+            foreach (var item in listaInt.ObtenerLista())
+            {
+                Console.WriteLine(item);
+            }
+
+
+
+        }
         public static void Punto3() { }
     }
 }
