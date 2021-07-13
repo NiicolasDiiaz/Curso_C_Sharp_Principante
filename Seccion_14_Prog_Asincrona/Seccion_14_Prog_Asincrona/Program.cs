@@ -14,36 +14,45 @@ namespace Seccion_14_Prog_Asincrona
             Task<Papas> papasTask = PrepararPapas(2);
 
             List<Task> allTasks = new List<Task> { aguaTask, guisoTask, huevosTask, papasTask };
-            
+
+            Agua water = new Agua();
+            Guiso sauce = new Guiso();
+            Huevos eggs = new Huevos();
+            Papas potatoes = new Papas();
+
             while (allTasks.Count > 0)
             {
                 Task finished = await Task.WhenAny(allTasks);
                 if (finished==aguaTask)
                 {
-                    Agua water = await aguaTask;
+                    water = await aguaTask;
                     allTasks.Remove(aguaTask);
                     Console.WriteLine("El agua esta servida");
                 }
                 else if(finished == guisoTask)
                 {
-                    Guiso sauce = await guisoTask;
+                    sauce = await guisoTask;
                     allTasks.Remove(guisoTask);
                     Console.WriteLine("El guiso esta listo");
                 }
                 else if (finished == huevosTask)
                 {
-                    Huevos eggs = await huevosTask;
+                    eggs = await huevosTask;
                     allTasks.Remove(huevosTask);
                     Console.WriteLine("Los huevos estan listos");
                 }
                 else if (finished == papasTask)
                 {
-                    Papas potatoes = await papasTask;
+                    potatoes = await papasTask;
                     allTasks.Remove(papasTask);
                     Console.WriteLine("Las papas estan listas");
                 }
             }
+
+            MezclarYFreirTodo(potatoes, sauce, eggs);
             Console.WriteLine("TORTILLA FINALIZDA");
+
+
         }
 
         public static async Task<Agua> ServirAgua(int cantidad)
@@ -61,6 +70,10 @@ namespace Seccion_14_Prog_Asincrona
         public static async Task<Papas> PrepararPapas(int cantidad)
         {
             return new Papas();
+        }
+        public static void MezclarYFreirTodo(Papas potatoes, Guiso sauce, Huevos eggs)
+        {
+
         }
 
 
