@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Seccion_17_EFC.Services;
 
 namespace Seccion_17_EFC
 {
@@ -28,6 +29,8 @@ namespace Seccion_17_EFC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IContextoDB, ContextoDB>();
+            services.AddTransient<ICancionService, CancionService>();
 
             services.AddDbContext<ContextoDB>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
