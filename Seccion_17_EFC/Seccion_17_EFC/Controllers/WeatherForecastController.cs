@@ -13,9 +13,15 @@ namespace Seccion_17_EFC.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private readonly ICancionService _cancionService;
-        public WeatherForecastController(ICancionService cancionService)
+        private readonly IAlbumService _albumService;
+        private readonly IAutorService _autorService;
+
+
+        public WeatherForecastController(ICancionService cancionService, IAlbumService albumService, IAutorService autorService)
         {
             _cancionService = cancionService;
+            _albumService = albumService;
+            _autorService = autorService;
         }
 
         private static readonly string[] Summaries = new[]
@@ -33,18 +39,36 @@ namespace Seccion_17_EFC.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            //_cancionService.AddCancion(new Models.Cancion
+            //{
+            //    Descripcion = "Nueva cancion",
+            //    Duracion = new TimeSpan(0, 4, 25),
+            //    Titulo = "Cancion1"
+            //});
+
+            //var canciones = _cancionService.GetCanciones();
+            //var cancion = _cancionService.GetCancion(1);
+            //cancion.Descripcion = "cancion cambiada";
+            //_cancionService.Update(cancion);
+            //_cancionService.DeleteCancion(2);
+
+            _albumService.AddAlbum(new Models.Album
+            {
+                Nombre = "Album1"
+            });
+            _autorService.AddAutor(new Models.Autor
+            {
+                Nombre="Nicolas Diaz"
+            });
             _cancionService.AddCancion(new Models.Cancion
             {
-                Descripcion = "Nueva cancion",
-                Duracion = new TimeSpan(0, 4, 25),
-                Titulo = "Cancion1"
+                AutorId = 1,
+                AlbumId = 1,
+                Descripcion = "Poner descripcion",
+                Titulo = "Titulo",
+                Duracion = new TimeSpan(0, 4, 23)
             });
 
-            var canciones = _cancionService.GetCanciones();
-            var cancion = _cancionService.GetCancion(1);
-            cancion.Descripcion = "cancion cambiada";
-            _cancionService.Update(cancion);
-            _cancionService.DeleteCancion(2);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

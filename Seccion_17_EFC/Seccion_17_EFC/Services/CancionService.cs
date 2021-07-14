@@ -1,4 +1,5 @@
-﻿using Seccion_17_EFC.Contexto;
+﻿using Microsoft.EntityFrameworkCore;
+using Seccion_17_EFC.Contexto;
 using Seccion_17_EFC.Models;
 using System;
 using System.Collections.Generic;
@@ -22,24 +23,27 @@ namespace Seccion_17_EFC.Services
             _contextoDB.Canciones.Add(cancion);
             _contextoDB.SaveChanges();
         }
-        public void DeleteCancion(int  CancionId)
+
+        public Cancion GetCancion(int CancionId)
         {
-            var cancion = GetCancion(CancionId);
-            DeleteCancion(cancion);
-        }
-        public void DeleteCancion(Cancion cancion)
-        {
-            _contextoDB.Canciones.Remove(cancion);
-            _contextoDB.SaveChanges();
+            return _contextoDB.Canciones.Include(x=>x.Autor).Include(x => x.Album).Where(x => x.CancionId == CancionId).FirstOrDefault();
         }
         public List<Cancion> GetCanciones()
         {
             return _contextoDB.Canciones.Select(x => x).ToList();
         }
-        public Cancion GetCancion(int CancionId)
+
+        public void DeleteCancion(Cancion cancion)
         {
-            return _contextoDB.Canciones.Where(x => x.CancionId == CancionId).FirstOrDefault();
+            _contextoDB.Canciones.Remove(cancion);
+            _contextoDB.SaveChanges();
         }
+        public void DeleteCancion(int  CancionId)
+        {
+            var cancion = GetCancion(CancionId);
+            DeleteCancion(cancion);
+        }
+
         public Cancion Update(Cancion cancion)
         {
             

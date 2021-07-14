@@ -11,8 +11,9 @@ namespace Seccion_17_EFC.Contexto
     public interface IContextoDB
     {
         DbSet<Cancion> Canciones { get; set; }
+        DbSet<Album> Albumes { get; set; }
+        DbSet<Autor> Autores { get; set; }
 
-       
         int SaveChanges();
        
         Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);

@@ -31,6 +31,8 @@ namespace Seccion_17_EFC
         {
             services.AddTransient<IContextoDB, ContextoDB>();
             services.AddTransient<ICancionService, CancionService>();
+            services.AddTransient<IAlbumService, AlbumService>();
+            services.AddTransient<IAutorService, AutorService>();
 
             services.AddDbContext<ContextoDB>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
