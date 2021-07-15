@@ -39,7 +39,24 @@ namespace Seccion_17_EFC
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Seccion_17_EFC", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                { 
+                    Title = "Seccion_17_EFC", 
+                    Version = "v1",
+                    Description = "Ejemplo de .NET",
+                    TermsOfService = new Uri("https://google.com"),
+                    Contact=new OpenApiContact 
+                    {
+                        Name="Nicolas Díaz",
+                        Email="nicolas.diaz@teaminternational.com",
+                        Url=new Uri("https://udemy.com")
+                    },
+                    License=new OpenApiLicense
+                    {
+                        Name="Licence number 00000",
+                        Url=new Uri("https://twitter.com")
+                    }
+                });
             });
         }
 
