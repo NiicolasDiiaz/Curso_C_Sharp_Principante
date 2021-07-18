@@ -14,6 +14,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Seccion_17_EFC.Services;
+using System.Reflection;
+using System.IO;
 
 namespace Seccion_17_EFC
 {
@@ -57,6 +59,11 @@ namespace Seccion_17_EFC
                         Url=new Uri("https://twitter.com")
                     }
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
         }
 

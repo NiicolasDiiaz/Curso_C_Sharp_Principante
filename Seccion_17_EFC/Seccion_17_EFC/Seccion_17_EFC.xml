@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Seccion_17_EFC</name>
+    </assembly>
+    <members>
+        <member name="M:Seccion_17_EFC.Controllers.WeatherForecastController.Get">
+            <summary>
+            Metodo get
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

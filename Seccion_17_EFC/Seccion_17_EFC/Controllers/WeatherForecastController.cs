@@ -36,6 +36,10 @@ namespace Seccion_17_EFC.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Metodo get
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
