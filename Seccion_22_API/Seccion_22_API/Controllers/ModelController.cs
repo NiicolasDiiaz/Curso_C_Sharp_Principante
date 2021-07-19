@@ -51,7 +51,7 @@ namespace Seccion_22_API.Controllers
         [HttpDelete("{id}")]
         public void Delete (int id)
         {
-            await _ModelRepository.Delete(id);
+            _ModelRepository.Delete(id);
         }
 
     }
