@@ -22,7 +22,6 @@ namespace Proyecto_Factura_V2.Models
         [Required(ErrorMessage = "Enter the manufacturer of the product")]
         public string Manufacturer { get; set; }
 
-        [Required(ErrorMessage = "Enter the date of entry of the product")]
         [DataType(DataType.Date)]
         [Display(Name = "Date of entry")]
         public DateTime DateOfEntry { get; set; }

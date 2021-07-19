@@ -33,7 +33,26 @@ namespace Proyecto_Factura_V2
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Proyecto_Factura_V2", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Proyecto_Factura_V2",
+                    Version = "v1",
+
+                    //Info adicional a la estandar:
+                    Description = "API para un producto",
+                    TermsOfService = new Uri("https://google.com"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Nicolas Diaz",
+                        Email = "nicolas.diaz@teaminternational.com",
+                        Url = new Uri("https://google.com")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "License type ",
+                        Url = new Uri("https://google.com")
+                    }
+                });
             });
 
             services.AddDbContext<DDBBContext>(options =>
