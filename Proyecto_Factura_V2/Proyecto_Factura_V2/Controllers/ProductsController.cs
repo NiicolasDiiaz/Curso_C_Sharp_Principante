@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proyecto_Factura_V2.Models;
+using Proyecto_Factura_V2.RequestModels;
 using Proyecto_Factura_V2.Services;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace Proyecto_Factura_V2.Controllers
         /// }
         /// </remarks>
         [HttpPost]
-        public void Post()
+        public void Post([FromBody]ProductRequest request)
         {
             _branchService.AddBranch(new Branch
             {
