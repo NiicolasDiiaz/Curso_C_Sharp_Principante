@@ -7,10 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Seccion_22_API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.IO;
+using Seccion_22_API.Repository;
 
 namespace Seccion_22_API
 {
@@ -32,6 +37,13 @@ namespace Seccion_22_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Seccion_22_API", Version = "v1" });
             });
+
+            //services.AddDbContext<BBDDContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BBDDContext>(opt => opt.UseInMemoryDatabase("MiDDBB"));
+
+            services.AddTransient<IBBDDContext, BBDDContext>();
+            services.AddTransient<IItemModelRepository, ItemModelRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
