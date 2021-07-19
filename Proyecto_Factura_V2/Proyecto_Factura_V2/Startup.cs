@@ -41,6 +41,7 @@ namespace Proyecto_Factura_V2
                 );
             services.AddTransient<IDDBBContext, DDBBContext>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IBranchService, BranchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

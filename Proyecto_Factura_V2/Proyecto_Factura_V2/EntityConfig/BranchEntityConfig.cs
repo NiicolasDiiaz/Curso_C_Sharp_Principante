@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Factura_V2.EntityConfig
 {
-    public class ProductEntityConfig
+    public class BranchEntityConfig
     {
-        public static void SetProductEntityConfig(EntityTypeBuilder<Product> entityBuilder)
+        public static void SetBranchEntityConfig(EntityTypeBuilder<Branch> entityBuilder)
         {
-            entityBuilder.HasKey(x => x.ProductId);
+            entityBuilder.HasKey(x => x.BranchId);
             //entityBuilder.Property(x => x.Name).IsRequired();
         }
     }

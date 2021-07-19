@@ -16,10 +16,12 @@ namespace Proyecto_Factura_V2.Controllers
         
         private readonly ILogger<ProductsController> _logger;
         private readonly IProductService _productService;
+        private readonly IBranchService _branchService;
 
-        public ProductsController(IProductService productService, ILogger<ProductsController> logger)
+        public ProductsController(IProductService productService, IBranchService branchService, ILogger<ProductsController> logger)
         {
             _productService = productService;
+            _branchService = branchService;
             _logger = logger;
         }
 
