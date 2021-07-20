@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Proyecto_Factura_V2.Models;
 using Proyecto_Factura_V2.RequestModels;
 using Proyecto_Factura_V2.Services;
+using Proyecto_Factura_V2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,26 @@ namespace Proyecto_Factura_V2.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpGet("{id}")]
-        public void Get(int id)
+        public ProductViewModel Get(int id)
         {
-            var product = _productService.GetProduct(id);
+            try
+            {
+                var product = _productService.GetProduct(id);
+                var viewProduct = new ProductViewModel
+                {
+                    Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
+                    ProductId = product.ProductId
+                };
+                return viewProduct;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         /// <summary>
@@ -51,7 +69,7 @@ namespace Proyecto_Factura_V2.Controllers
         /// }
         /// </remarks>
         [HttpPost]
-        public void Post([FromBody]ProductRequest request)
+        public IActionResult Post([FromBody]ProductRequestPost request)
         {
             _branchService.AddBranch(new Branch
             {
@@ -61,13 +79,14 @@ namespace Proyecto_Factura_V2.Controllers
 
             _productService.AddProduct(new Product
             {
-                Name = "Sedal",
-                Description = "Product for hair",
-                Manufacturer = "P&G",
-                Price = 16000,
+                Name = request.Name,
+                Description = request.Description,
+                Manufacturer = request.Manufacturer,
+                Price = request.Price,
                 DateOfEntry = DateTime.Now,
-                BranchId = 1
+                BranchId = request.BranchId
             });
+            return Ok();
         }
 
         /// <summary>
@@ -84,12 +103,17 @@ namespace Proyecto_Factura_V2.Controllers
         /// }
         /// </remarks>
         /// <param name="id"></param>
-        [HttpPut("{id}")]
-        public void Put(int id)
+        [HttpPut]
+        public IActionResult Put([FromBody] ProductRequestPut request)
         {
-            var product = _productService.GetProduct(id);
-            product.Description = "Description changed!";
+            var product = _productService.GetProduct(request.ProductId);
+            product.Name = request.Name;
+            product.Description = request.Description;
+            product.Manufacturer = request.Manufacturer;
+            product.Price = request.Price;
+            product.BranchId = request.BranchId;
             _productService.UpdateProduct(product);
+            return Ok();
         }
 
         /// <summary>
@@ -97,9 +121,10 @@ namespace Proyecto_Factura_V2.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             _productService.DeleteProduct(id);
+            return Ok();
         }
 
     }

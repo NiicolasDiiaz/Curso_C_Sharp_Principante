@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Factura_V2.RequestModels
 {
-    public class ProductRequest
+    public class ProductRequestPost
     {
         //Properties the sytem needs in order to make a database request
-        public int ProductId { get; set; }
-
         public string Name { get; set; }
 
         public int Price { get; set; }
@@ -18,5 +16,6 @@ namespace Proyecto_Factura_V2.RequestModels
 
         public int BranchId { get; set; }
 
+        public string Description { get; set; }
     }
 }
