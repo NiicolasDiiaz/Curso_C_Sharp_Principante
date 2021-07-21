@@ -33,7 +33,7 @@ namespace Proyecto_Factura_V2.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpGet("{id}")]
-        public ProductViewModel Get(int id)
+        public ProductViewModel Get(int id) //Deberia ser (int? id) ? Acepto null y lidio con eso
         {
             try
             {
@@ -69,8 +69,10 @@ namespace Proyecto_Factura_V2.Controllers
         /// }
         /// </remarks>
         [HttpPost]
+        [ValidateAntiForgeryToken] //Potection against bots
         public IActionResult Post([FromBody]ProductRequestPost request)
         {
+            //if (ModelState.IsValid() ????
             _branchService.AddBranch(new Branch
             {
                 Name = "Engativa branch",
@@ -104,6 +106,7 @@ namespace Proyecto_Factura_V2.Controllers
         /// </remarks>
         /// <param name="id"></param>
         [HttpPut]
+        [ValidateAntiForgeryToken] //Potection against bots
         public IActionResult Put([FromBody] ProductRequestPut request)
         {
             var product = _productService.GetProduct(request.ProductId);
@@ -121,7 +124,7 @@ namespace Proyecto_Factura_V2.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) //Deberia ser (int? id) ? Acepto null y lidio con eso
         {
             _productService.DeleteProduct(id);
             return Ok();

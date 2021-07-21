@@ -25,7 +25,11 @@ namespace Proyecto_Factura_V2.Services
 
         public Product GetProduct(int ProductId)
         {
-            return _contextoDB.Products.Include(x => x.Branch).Where(x => x.ProductId == ProductId).FirstOrDefault();
+            //Base function:
+            return _contextoDB.Products.Find(ProductId);
+
+            //Lambda expresion:
+            //return _contextoDB.Products.Include(x => x.Branch).Where(x => x.ProductId == ProductId).FirstOrDefault();
         }
         public List<Product> GetProducts()
         {
