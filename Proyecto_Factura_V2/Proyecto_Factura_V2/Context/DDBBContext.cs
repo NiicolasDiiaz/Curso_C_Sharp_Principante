@@ -11,7 +11,7 @@ namespace Proyecto_Factura_V2.Context
 {
     public class DDBBContext : DbContext, IDDBBContext
     {
-        public DDBBContext(DbContextOptions<DDBBContext> options):base(options)
+        public DDBBContext(DbContextOptions<DDBBContext> options) : base(options)
         {
 
         }

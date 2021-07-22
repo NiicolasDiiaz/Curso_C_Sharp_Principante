@@ -13,6 +13,5 @@ namespace Proyecto_Factura_V2.Context
         DbSet<Branch> Branches { get; set; }
 
         int SaveChanges();
-
     }
 }
